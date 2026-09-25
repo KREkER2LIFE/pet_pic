@@ -109,8 +109,30 @@ footer { margin-top: 2.5rem; font-size: 0.78rem; opacity: 0.4; border-top: 1px s
     }
     tabDog.setAttribute('aria-selected', species === 'dog');
     tabCat.setAttribute('aria-selected', species === 'cat');
+   loadBreeds(); 
+}
+  async function loadBreeds() {
+  breedSelect.innerHTML = '<option>Loading breeds…</option>';
+  breedSelect.disabled = true;
+  try {
+    if (state.species === 'dog') {
+      const res = await fetch('https://dog.ceo/api/breeds/list/all');
+      const data = await res.json();
+      const breeds = Object.keys(data.message).sort();
+      breedSelect.innerHTML = '<option value="">Any breed</option>' +
+        breeds.map(b => `<option value="${b}">${b}</option>`).join('');
+    } else {
+      const res = await fetch('https://api.thecatapi.com/v1/breeds');
+      const breeds = await res.json();
+      breeds.sort((a, b) => a.name.localeCompare(b.name));
+      breedSelect.innerHTML = '<option value="">Any breed</option>' +
+        breeds.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
+    }
+  } catch (e) {
+    breedSelect.innerHTML = '<option value="">Any breed</option>';
   }
-
+  breedSelect.disabled = false;
+}
   tabDog.addEventListener('click', () => setSpecies('dog'));
   tabCat.addEventListener('click', () => setSpecies('cat'));
 </script>
