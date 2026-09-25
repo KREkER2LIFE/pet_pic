@@ -33,6 +33,26 @@
     --line: rgba(239,233,218,0.16);
   }
   * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  display: flex;
+  justify-content: center;
+}
+main { width: 100%; max-width: 560px; padding: 2.5rem 1.5rem 3rem; }
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 8vw, 3rem);
+  line-height: 1;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+}
+.tagline { margin: 0 0 1.75rem; color: var(--ink); opacity: 0.62; font-size: 0.98rem; }
 </style>
 </head>
 <body>
