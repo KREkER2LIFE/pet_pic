@@ -53,9 +53,24 @@ h1 {
   letter-spacing: -0.01em;
 }
 .tagline { margin: 0 0 1.75rem; color: var(--ink); opacity: 0.62; font-size: 0.98rem; }
+.tabs {
+  display: flex; gap: 0; border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px; width: fit-content; margin-bottom: 1.5rem;
+}
+.tab {
+  border: none; background: transparent; font-family: 'Inter', sans-serif;
+  font-size: 0.95rem; font-weight: 500; padding: 0.5rem 1.15rem;
+  border-radius: 999px; cursor: pointer; color: var(--ink); opacity: 0.55;
+  transition: background 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+}
+.tab[aria-selected="true"] { opacity: 1; background: var(--accent); color: #FFF9F0; }
 </style>
 </head>
 <body>
+    <div class="tabs" role="tablist" aria-label="Animal">
+  <button class="tab" id="tab-dog" role="tab" aria-selected="true">Dogs</button>
+  <button class="tab" id="tab-cat" role="tab" aria-selected="false">Cats</button>
+</div>
   
     
 </body>
