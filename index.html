@@ -89,6 +89,31 @@ button.fetch:disabled { opacity: 0.5; cursor: default; }
 .meta { margin-top: 0.9rem; font-size: 0.85rem; opacity: 0.55; min-height: 1.2em; text-transform: capitalize; }
 footer { margin-top: 2.5rem; font-size: 0.78rem; opacity: 0.4; border-top: 1px solid var(--line); padding-top: 1rem; }
 </style>
+<script>
+  const state = { species: 'dog', breeds: [] };
+  const tabDog = document.getElementById('tab-dog');
+  const tabCat = document.getElementById('tab-cat');
+  const breedSelect = document.getElementById('breedSelect');
+  const fetchBtn = document.getElementById('fetchBtn');
+  const photo = document.getElementById('photo');
+  const statusEl = document.getElementById('status');
+  const metaEl = document.getElementById('meta');
+  const root = document.documentElement;
+
+  function setSpecies(species) {
+    state.species = species;
+    if (species === 'dog') {
+      root.style.setProperty('--accent', 'var(--dog)');
+    } else {
+      root.style.setProperty('--accent', 'var(--cat)');
+    }
+    tabDog.setAttribute('aria-selected', species === 'dog');
+    tabCat.setAttribute('aria-selected', species === 'cat');
+  }
+
+  tabDog.addEventListener('click', () => setSpecies('dog'));
+  tabCat.addEventListener('click', () => setSpecies('cat'));
+</script>
 </head>
 <body>
     <div class="tabs" role="tablist" aria-label="Animal">
