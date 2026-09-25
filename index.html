@@ -64,12 +64,29 @@ h1 {
   transition: background 0.2s ease, opacity 0.2s ease, color 0.2s ease;
 }
 .tab[aria-selected="true"] { opacity: 1; background: var(--accent); color: #FFF9F0; }
+.controls { display: flex; gap: 0.6rem; margin-bottom: 1.25rem; flex-wrap: wrap; align-items: center; }
+select, button.fetch {
+  font-family: 'Inter', sans-serif; font-size: 0.95rem; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 0.65rem 0.9rem;
+}
+select { flex: 1; min-width: 140px; }
+button.fetch {
+  background: var(--accent); color: #FFF9F0; border: none; font-weight: 600;
+  cursor: pointer; padding: 0.65rem 1.3rem; transition: opacity 0.15s ease, transform 0.1s ease;
+}
+button.fetch:hover { opacity: 0.92; }
+button.fetch:active { transform: scale(0.98); }
+button.fetch:disabled { opacity: 0.5; cursor: default; }
 </style>
 </head>
 <body>
     <div class="tabs" role="tablist" aria-label="Animal">
   <button class="tab" id="tab-dog" role="tab" aria-selected="true">Dogs</button>
   <button class="tab" id="tab-cat" role="tab" aria-selected="false">Cats</button>
+</div>
+<div class="controls">
+  <select id="breedSelect" aria-label="Breed"></select>
+  <button class="fetch" id="fetchBtn">New photo</button>
 </div>
   
     
